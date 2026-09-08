@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore · Sobre Mim</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f9;
+            color: #1a2634;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0b1a2a, #1a3a5c);
+            padding: 20px 0 0;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0 20px 15px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-container img {
+            height: 45px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #6ab0ff;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 10px 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #c8dcee;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        nav ul li a.ativo {
+            background: rgba(106, 176, 255, 0.25);
+            color: #fff;
+            box-shadow: inset 0 -2px 0 #6ab0ff;
+        }
+
+        .sobre-hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            background: #fff;
+            border-radius: 24px;
+            padding: 50px 45px;
+            margin: 30px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .sobre-hero .foto {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+
+        .sobre-hero .foto img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #6ab0ff;
+            box-shadow: 0 8px 25px rgba(106, 176, 255, 0.25);
+        }
+
+        .sobre-hero .texto {
+            flex: 1;
+        }
+
+        .sobre-hero .texto h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #0b1a2a;
+            margin-bottom: 8px;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        .sobre-hero .texto .subtitulo {
+            font-size: 1.2rem;
+            color: #6ab0ff;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .sobre-hero .texto p {
+            font-size: 1.05rem;
+            color: #2a3a4a;
+            margin-bottom: 12px;
+        }
+
+        .competencias {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 45px;
+            margin: 30px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .competencias h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b1a2a;
+            margin-bottom: 20px;
+            border-left: 5px solid #6ab0ff;
+            padding-left: 18px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: #f0f6fe;
+            border-radius: 12px;
+            padding: 18px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-4px);
+            border-color: #6ab0ff;
+            box-shadow: 0 8px 20px rgba(106, 176, 255, 0.15);
+        }
+
+        .skill-item .icon {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .skill-item .nome {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #0b1a2a;
+        }
+
+        .objetivo {
+            background: linear-gradient(135deg, #0b1a2a, #1a3a5c);
+            border-radius: 24px;
+            padding: 40px 45px;
+            margin: 30px 0;
+            color: #fff;
+        }
+
+        .objetivo h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border-left: 5px solid #6ab0ff;
+            padding-left: 18px;
+            color: #fff;
+        }
+
+        .objetivo p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            max-width: 700px;
+        }
+
+        /* ===== SEÇÃO DE ÁUDIO (ADAPTADA) ===== */
+        .audio-section {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 45px;
+            margin: 30px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .audio-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b1a2a;
+            margin-bottom: 10px;
+            border-left: 5px solid #6ab0ff;
+            padding-left: 18px;
+        }
+
+        .audio-section .subtitle {
+            color: #5a6a7a;
+            margin-bottom: 25px;
+            padding-left: 23px;
+        }
+
+        .audio-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .audio-item {
+            background: #f0f6fe;
+            border-radius: 16px;
+            padding: 20px 25px;
+            border-left: 4px solid #6ab0ff;
+            transition: all 0.3s ease;
+        }
+
+        .audio-item:hover {
+            background: #e5effa;
+            transform: translateX(4px);
+        }
+
+        .audio-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .audio-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0b1a2a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .audio-title .badge {
+            font-size: 0.65rem;
+            background: #6ab0ff;
+            color: #0b1a2a;
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .audio-author {
+            font-size: 0.85rem;
+            color: #5a6a7a;
+            background: rgba(106, 176, 255, 0.1);
+            padding: 2px 14px;
+            border-radius: 30px;
+        }
+
+        .audio-desc {
+            font-size: 0.95rem;
+            color: #4a5a6a;
+            margin: 6px 0 12px 0;
+            padding-left: 12px;
+            border-left: 2px solid rgba(106, 176, 255, 0.25);
+        }
+
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            background: rgba(0, 0, 0, 0.03);
+            padding: 8px 16px 8px 20px;
+            border-radius: 40px;
+            border: 1px solid rgba(106, 176, 255, 0.1);
+        }
+
+        .audio-player audio {
+            width: 100%;
+            min-width: 180px;
+            max-width: 400px;
+            height: 38px;
+            border-radius: 40px;
+        }
+
+        .audio-player audio::-webkit-media-controls-panel {
+            background: #dce8f5;
+            border-radius: 40px;
+        }
+
+        .audio-player audio::-webkit-media-controls-play-button {
+            background-color: #0b1a2a;
+            border-radius: 50%;
+            color: #fff;
+        }
+
+        .fallback-msg {
+            color: #6a7a8a;
+            background: rgba(200, 60, 60, 0.06);
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(200, 60, 60, 0.08);
+        }
+
+        .glow-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #6ab0ff;
+            border-radius: 50%;
+            box-shadow: 0 0 14px rgba(106, 176, 255, 0.5);
+            flex-shrink: 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid #dde5ed;
+            color: #6a7a8a;
+            font-size: 0.95rem;
+        }
+
+        .footer a {
+            color: #1a3a5c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: #6ab0ff;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            .sobre-hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .sobre-hero .foto {
+                flex: 0 0 auto;
+            }
+            .sobre-hero .texto h1 {
+                font-size: 2rem;
+            }
+            .competencias {
+                padding: 25px 20px;
+            }
+            .objetivo {
+                padding: 25px 20px;
+            }
+            .audio-section {
+                padding: 25px 20px;
+            }
+            .audio-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .audio-player {
+                padding: 8px 12px;
+            }
+            .audio-player audio {
+                min-width: 130px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .audio-item {
+                padding: 15px 16px;
+            }
+            .audio-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="LOGO.jpeg" alt="Logo CC14">
+                <div class="logo">Tech<span>Store</span></div>
+            </div>
+            <nav>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="Psobre.html" class="ativo">Sobre</a></li>
+        <li><a href="Pservicos.html">Serviços</a></li>
+        <li><a href="Pcatalogo.html">Catálogo</a></li>
+        <li><a href="Pcontacto.html">Contacto</a></li>
+        <li><a href="Pfaq.html">FAQ</a></li>
+    </ul>
+</nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="sobre-hero">
+        <div class="foto">
+            <img src="cv.jpeg" alt="Carlos Chirindza">
+        </div>
+        <div class="texto">
+            <h1>Sobre Mim</h1>
+            <div class="subtitulo">Carlos Chirindza · Desenvolvedor Web em Formação</div>
+            <p>Olá! O meu nome é <strong>Carlos Chirindza</strong> e sou estudante da área de Informática no <strong>Instituto Médio Politécnico</strong>. Tenho grande interesse pela tecnologia e pelo desenvolvimento de websites.</p>
+            <p>Atualmente encontro-me em formação na área de <strong>Desenvolvimento Web</strong>, onde tenho adquirido conhecimentos em <strong>HTML e CSS</strong> para criar páginas modernas, organizadas e responsivas.</p>
+            <p>O principal objetivo deste website é apresentar os trabalhos desenvolvidos durante o módulo <strong>DPWHTML</strong> e demonstrar os conhecimentos adquiridos ao longo da formação.</p>
+        </div>
+    </div>
+
+    <div class="competencias">
+        <h2>Competências</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <span class="icon">📄</span>
+                <span class="nome">HTML5</span>
+            </div>
+            <div class="skill-item">
+                <span class="icon">🎨</span>
+                <span class="nome">CSS3</span>
+            </div>
+            <div class="skill-item">
+                <span class="icon">📱</span>
+                <span class="nome">Design Responsivo</span>
+            </div>
+            <div class="skill-item">
+                <span class="icon">🧭</span>
+                <span class="nome">Menus de Navegação</span>
+            </div>
+            <div class="skill-item">
+                <span class="icon">📊</span>
+                <span class="nome">Tabelas e Listas</span>
+            </div>
+            <div class="skill-item">
+                <span class="icon">📝</span>
+                <span class="nome">Formulários</span>
+            </div>
+            <div class="skill-item">
+                <span class="icon">🖼️</span>
+                <span class="nome">Imagens e Multimédia</span>
+            </div>
+            <div class="skill-item">
+                <span class="icon">🔗</span>
+                <span class="nome">Hiperligações</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="audio-section">
+        <h2>🎧 Minha Playlist</h2>
+        <p class="subtitle">Alguns dos meus áudios favoritos que me inspiram no dia a dia.</p>
+
+        <div class="audio-list">
+            <div class="audio-item">
+                <div class="audio-header">
+                    <div class="audio-title">
+                        <span class="glow-dot"></span> Formação e Estudos
+                        <span class="badge">#2</span>
+                    </div>
+                    <div class="audio-author">✦ Fonte: Gravação pessoal</div>
+                </div>
+                <div class="audio-desc">
+                    Falo sobre minha trajetória acadêmica, cursos e áreas de interesse.
+                    Este áudio representa minha dedicação ao aprendizado contínuo e
+                    às disciplinas que moldaram minha visão de mundo.
+                </div>
+                <div class="audio-player">
+                    <audio controls>
+                        <source src="audio2.mp3" type="audio/mpeg">
+                        <span class="fallback-msg">Seu navegador não suporta áudio HTML5.</span>
+                    </audio>
+                </div>
+            </div>
+
+            <div class="audio-item">
+                <div class="audio-header">
+                    <div class="audio-title">
+                        <span class="glow-dot"></span> Dev Web · Paixão
+                        <span class="badge">#3</span>
+                    </div>
+                    <div class="audio-author">✦ Fonte: Gravação pessoal</div>
+                </div>
+                <div class="audio-desc">
+                    Aqui compartilho minha relação com o desenvolvimento de aplicativos web:
+                    as tecnologias que mais gosto, a criatividade envolvida e o prazer
+                    de construir interfaces e soluções funcionais.
+                </div>
+                <div class="audio-player">
+                    <audio controls>
+                        <source src="audio3.mp3" type="audio/mpeg">
+                        <span class="fallback-msg">Seu navegador não suporta áudio HTML5.</span>
+                    </audio>
+                </div>
+            </div>
+
+            <div class="audio-item">
+                <div class="audio-header">
+                    <div class="audio-title">
+                        <span class="glow-dot"></span> Hobbies e Lazer
+                        <span class="badge">#4</span>
+                    </div>
+                    <div class="audio-author">✦ Fonte: Gravação pessoal</div>
+                </div>
+                <div class="audio-desc">
+                    Do que gosto de fazer quando não estou estudando ou programando.
+                    Esportes, leitura, música e momentos com amigos — este áudio
+                    captura a essência do meu tempo livre.
+                </div>
+                <div class="audio-player">
+                    <audio controls>
+                        <source src="audio4.mp3" type="audio/mpeg">
+                        <span class="fallback-msg">Seu navegador não suporta áudio HTML5.</span>
+                    </audio>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="objetivo">
+        <h2>Objetivo</h2>
+        <p>O principal objetivo deste website é apresentar os trabalhos desenvolvidos durante o módulo <strong>DPWHTML</strong> e demonstrar os conhecimentos adquiridos ao longo da formação. Através deste projecto, pretendo consolidar as minhas habilidades em desenvolvimento web e criar um portfólio que reflita o meu crescimento na área da programação e design de interfaces.</p>
+    </div>
+
+    <div class="footer">
+        <p>TechStore © 2026 · <a href="Projecto.html">Página Inicial</a> · <a href="Pcontacto.html">Contacto</a></p>
+    </div>
+
+</div>
+</body>
+</html>

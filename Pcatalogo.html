@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore · Catálogo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f9;
+            color: #1a2634;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0b1a2a, #1a3a5c);
+            padding: 20px 0 0;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0 20px 15px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-container img {
+            height: 45px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #6ab0ff;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 10px 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #c8dcee;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        nav ul li a.ativo {
+            background: rgba(106, 176, 255, 0.25);
+            color: #fff;
+            box-shadow: inset 0 -2px 0 #6ab0ff;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            margin: 30px 0 15px;
+            color: #0b1a2a;
+            border-left: 5px solid #6ab0ff;
+            padding-left: 18px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 40px 0 15px;
+            color: #0b1a2a;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 10px 0 5px;
+            color: #0b1a2a;
+        }
+
+        p {
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+            color: #2a3a4a;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #6ab0ff;
+            color: #0b1a2a;
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-stock {
+            display: inline-block;
+            background: #e8eef5;
+            color: #1a3a5c;
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .catalogo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .produto-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .produto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .produto-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .produto-info {
+            padding: 20px;
+        }
+
+        .produto-info .categoria {
+            display: inline-block;
+            background: #e8eef5;
+            color: #1a3a5c;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 12px;
+            border-radius: 50px;
+            margin-bottom: 5px;
+        }
+
+        .produto-info h3 {
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
+        .produto-info .especificacoes {
+            font-size: 0.95rem;
+            color: #5a6a7a;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .produto-info .preco {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a3a5c;
+            display: block;
+            margin: 8px 0;
+        }
+
+        .produto-info .btn-comprar {
+            display: inline-block;
+            background: #0b1a2a;
+            color: #fff;
+            padding: 8px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .produto-info .btn-comprar:hover {
+            background: #6ab0ff;
+            color: #0b1a2a;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid #dde5ed;
+            color: #6a7a8a;
+            font-size: 0.95rem;
+        }
+
+        .footer a {
+            color: #1a3a5c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: #6ab0ff;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .catalogo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="LOGO.jpeg" alt="Logo CC14">
+                <div class="logo">Tech<span>Store</span></div>
+            </div>
+            <nav>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="Psobre.html">Sobre</a></li>
+        <li><a href="Pservicos.html">Serviços</a></li>
+        <li><a href="Pcatalogo.html" class="ativo">Catálogo</a></li>
+        <li><a href="Pcontacto.html">Contacto</a></li>
+        <li><a href="Pfaq.html">FAQ</a></li>
+    </ul>
+</nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <h1>Catálogo de Equipamentos</h1>
+
+    <!-- ===== PC E PORTÁTEIS ===== -->
+    <h2>PC e Portáteis</h2>
+    <div class="catalogo-grid">
+        <div class="produto-card">
+            <img src="a-pc-pouter3preto-cgpu-m-240mm-001_3_9.jpg" alt="PC Gamer">
+            <div class="produto-info">
+                <span class="categoria">PC Gamer</span>
+                <h3>PC Gamer Pichau Balder V</h3>
+                <p class="especificacoes">AMD Ryzen 7 5800X3D · 16GB RAM DDR4 · 1TB SSD · GeForce RTX 5080 16GB</p>
+                <span class="preco">95.000 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+        <div class="produto-card">
+            <img src="laptop1.jpeg" alt="Laptop">
+            <div class="produto-info">
+                <span class="categoria">Portátil</span>
+                <h3>Lenovo IdeaPad Flex 5</h3>
+                <p class="especificacoes">AMD Ryzen 7 5700U · 16GB RAM DDR4 · 256GB SSD · 14" Display 1920x1080</p>
+                <span class="preco">35.000 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+        <div class="produto-card">
+            <img src="laptop2.jpeg" alt="Laptop">
+            <div class="produto-info">
+                <span class="categoria">Portátil Gaming</span>
+                <h3>Wootbook Gaming</h3>
+                <p class="especificacoes">AMD Ryzen 7 5900HX · 32GB RAM DDR4 · 512GB SSD · NVIDIA GeForce RTX 3070 8GB GDDR6</p>
+                <span class="preco">68.000 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== COMPONENTES ===== -->
+    <h2>Componentes</h2>
+    <div class="catalogo-grid">
+        <div class="produto-card">
+            <img src="100-100000457box1.jpg" alt="Processador">
+            <div class="produto-info">
+                <span class="categoria">Processador</span>
+                <h3>AMD Ryzen 5 5500</h3>
+                <p class="especificacoes">6-Core · 12-Threads · 3.6GHz (4.2GHz Turbo) · Cache 19MB</p>
+                <span class="preco">7.000 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+        <div class="produto-card">
+            <img src="MEMORIA-PCH-GEN-1X.jpg" alt="Memória RAM">
+            <div class="produto-info">
+                <span class="categoria">Memória RAM</span>
+                <h3>Memória RAM 16GB DDR5</h3>
+                <p class="especificacoes">16GB · DDR5 · 5200MHz</p>
+                <span class="preco">43.000 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+        <div class="produto-card">
+            <img src="gv-r76gaming-oc-8gd4.jpg" alt="Placa de Video">
+            <div class="produto-info">
+                <span class="categoria">Placa de Video</span>
+                <h3>Gigabyte Radeon RX 7600 Gaming OC</h3>
+                <p class="especificacoes">8GB · GDDR6</p>
+                <span class="preco">33.500 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MONITORES ===== -->
+    <h2>Monitores</h2>
+    <div class="catalogo-grid">
+        <div class="produto-card">
+            <img src="mcr-hznp24-bl0221225.jpg" alt="Monitor">
+            <div class="produto-info">
+                <span class="categoria">Monitor</span>
+                <h3>Monitor Gamer Mancer Horizon Z Pro</h3>
+                <p class="especificacoes">23.8" · 144Hz · IPS FHD · 1ms</p>
+                <span class="preco">6.300 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+        <div class="produto-card">
+            <img src="darkflash-s275qt1632122.jpg" alt="Monitor">
+            <div class="produto-info">
+                <span class="categoria">Monitor</span>
+                <h3>Monitor Gamer Aigo Darkflash S275QT</h3>
+                <p class="especificacoes">27" · IPS · 320Hz · QHD · 1ms</p>
+                <span class="preco">59.000 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+        <div class="produto-card">
+            <img src="https://images.unsplash.com/photo-1585792180666-f7347c490ee2?w=400&h=220&fit=crop" alt="Monitor LG">
+            <div class="produto-info">
+                <span class="categoria">Monitor</span>
+                <h3>LG UltraGear 27" 144Hz</h3>
+                <p class="especificacoes">27" QHD · 144Hz · IPS · G-Sync · HDR10</p>
+                <span class="preco">33.000 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PERIFÉRICOS ===== -->
+    <h2>Periféricos</h2>
+    <div class="catalogo-grid">
+        <div class="produto-card">
+            <img src="q1hw-p11.jpg" alt="Teclado Magnético">
+            <div class="produto-info">
+                <span class="categoria">Teclado</span>
+                <h3>Keychron Q1 HEx</h3>
+                <p class="especificacoes">USB · RGB · Switch Ultra-Fast Lime · Q1HW-P1</p>
+                <span class="preco">2.500 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+        <div class="produto-card">
+            <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=220&fit=crop" alt="Rato Gaming">
+            <div class="produto-info">
+                <span class="categoria">Rato</span>
+                <h3>Razer Viper V3 Pro</h3>
+                <p class="especificacoes">Wireless · 8000 Hz · 59g · Sensor Focus Pro 35K</p>
+                <span class="preco">9.800 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+        <div class="produto-card">
+            <img src="jblt730btblkbr4.jpg" alt="Headset">
+            <div class="produto-info">
+                <span class="categoria">Headset</span>
+                <h3>JBL Tune 730BT</h3>
+                <p class="especificacoes">Wireless · 40mm · Preto · PC/PS/Xbox</p>
+                <span class="preco">4.200 MT</span>
+                <a href="#" class="btn-comprar">Ver Detalhes</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>TechStore © 2026 · <a href="Projecto.html">Página Inicial</a> · <a href="Pcontacto.html">Contacto</a></p>
+    </div>
+
+</div>
+</body>
+</html>

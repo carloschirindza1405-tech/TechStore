@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore · Serviços</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f9;
+            color: #1a2634;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0b1a2a, #1a3a5c);
+            padding: 20px 0 0;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0 20px 15px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-container img {
+            height: 45px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #6ab0ff;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 10px 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #c8dcee;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        nav ul li a.ativo {
+            background: rgba(106, 176, 255, 0.25);
+            color: #fff;
+            box-shadow: inset 0 -2px 0 #6ab0ff;
+        }
+
+        /* ===== HERO DA PÁGINA ===== */
+        .page-hero {
+            background: linear-gradient(135deg, #0b1a2a, #1a3a5c);
+            border-radius: 24px;
+            padding: 50px 45px;
+            margin-bottom: 40px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(106, 176, 255, 0.06);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .page-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            border-left: none;
+            padding-left: 0;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero h1 span {
+            color: #6ab0ff;
+        }
+
+        .page-hero p {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== SEÇÃO DE SERVIÇOS ===== */
+        .servicos-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .servicos-intro h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0b1a2a;
+            margin-bottom: 10px;
+        }
+
+        .servicos-intro p {
+            font-size: 1.05rem;
+            color: #4a5a6a;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0 50px;
+        }
+
+        .servico-card {
+            background: #fff;
+            padding: 35px 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            text-align: center;
+            border-bottom: 4px solid transparent;
+            position: relative;
+        }
+
+        .servico-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
+            border-bottom-color: #6ab0ff;
+        }
+
+        .servico-card .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #e8f0fe, #d4e4f7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .servico-card:hover .icon-wrapper {
+            background: linear-gradient(135deg, #0b1a2a, #1a3a5c);
+            transform: scale(1.05);
+        }
+
+        .servico-card:hover .icon-wrapper span {
+            filter: brightness(10);
+        }
+
+        .servico-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0b1a2a;
+            margin-bottom: 10px;
+        }
+
+        .servico-card p {
+            font-size: 0.95rem;
+            color: #5a6a7a;
+            margin-bottom: 15px;
+        }
+
+        .servico-card .saiba-mais {
+            display: inline-block;
+            color: #6ab0ff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .servico-card .saiba-mais:hover {
+            border-bottom-color: #6ab0ff;
+            color: #1a3a5c;
+        }
+
+        /* ===== SEÇÃO DE PLANOS (TABELA) ===== */
+        .planos-section {
+            background: #fff;
+            border-radius: 24px;
+            padding: 45px;
+            margin: 40px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .planos-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0b1a2a;
+            margin-bottom: 10px;
+            border-left: 5px solid #6ab0ff;
+            padding-left: 18px;
+        }
+
+        .planos-section .subtitle {
+            color: #5a6a7a;
+            margin-bottom: 25px;
+            padding-left: 23px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        th {
+            background: #0b1a2a;
+            color: #fff;
+            font-weight: 600;
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eef3f8;
+            font-size: 0.98rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #f5f9ff;
+        }
+
+        .destaque-preco {
+            font-weight: 700;
+            color: #1a3a5c;
+            font-size: 1.05rem;
+        }
+
+        .plano-destaque {
+            background: #f0f6fe;
+        }
+
+        .plano-destaque td {
+            background: #f0f6fe;
+        }
+
+        .plano-destaque:hover td {
+            background: #e5effa;
+        }
+
+        .badge-popular {
+            display: inline-block;
+            background: #6ab0ff;
+            color: #0b1a2a;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 8px;
+        }
+
+        /* ===== VÍDEO ===== */
+        .video-wrapper {
+            background: #0b1a2a;
+            border-radius: 24px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .video-wrapper h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 16px;
+            border: none;
+        }
+
+        /* ===== BOTÃO CONTACTO ===== */
+        .btn-contacto-wrapper {
+            text-align: center;
+            margin: 30px 0 20px;
+            padding: 45px 30px;
+            background: linear-gradient(135deg, #f0f6fe, #dce8f5);
+            border-radius: 24px;
+            border: 2px dashed #6ab0ff;
+        }
+
+        .btn-contacto-wrapper h3 {
+            font-size: 1.6rem;
+            color: #0b1a2a;
+            margin-bottom: 10px;
+        }
+
+        .btn-contacto-wrapper p {
+            color: #4a5a6a;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .btn-contacto {
+            display: inline-block;
+            background: linear-gradient(135deg, #0b1a2a, #1a3a5c);
+            color: #fff;
+            padding: 16px 50px;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(26, 58, 92, 0.2);
+        }
+
+        .btn-contacto:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(26, 58, 92, 0.35);
+            background: linear-gradient(135deg, #1a3a5c, #2a5a8c);
+        }
+
+        .btn-contacto::after {
+            content: " →";
+            transition: all 0.3s ease;
+        }
+
+        .btn-contacto:hover::after {
+            margin-left: 8px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid #dde5ed;
+            color: #6a7a8a;
+            font-size: 0.95rem;
+        }
+
+        .footer a {
+            color: #1a3a5c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: #6ab0ff;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            .page-hero {
+                padding: 30px 20px;
+                text-align: center;
+            }
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            .page-hero p {
+                margin: 0 auto;
+            }
+            .servicos-grid {
+                grid-template-columns: 1fr;
+            }
+            .planos-section {
+                padding: 25px 15px;
+            }
+            .planos-section h2 {
+                font-size: 1.5rem;
+            }
+            table {
+                font-size: 0.85rem;
+            }
+            th, td {
+                padding: 10px 12px;
+            }
+            .video-wrapper {
+                padding: 20px;
+            }
+            .video-wrapper iframe {
+                height: 220px;
+            }
+            .btn-contacto-wrapper {
+                padding: 25px 15px;
+            }
+            .btn-contacto-wrapper h3 {
+                font-size: 1.2rem;
+            }
+            .btn-contacto {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero h1 {
+                font-size: 1.6rem;
+            }
+            table {
+                font-size: 0.75rem;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            .badge-popular {
+                font-size: 0.6rem;
+                padding: 1px 8px;
+            }
+            .servico-card {
+                padding: 25px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="LOGO.jpeg" alt="Logo CC14">
+                <div class="logo">Tech<span>Store</span></div>
+            </div>
+            <nav>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="Psobre.html">Sobre</a></li>
+        <li><a href="Pservicos.html" class="ativo">Serviços</a></li>
+        <li><a href="Pcatalogo.html">Catálogo</a></li>
+        <li><a href="Pcontacto.html">Contacto</a></li>
+        <li><a href="Pfaq.html">FAQ</a></li>
+    </ul>
+</nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- HERO -->
+    <div class="page-hero">
+        <h1>Serviços <span>TechStore</span></h1>
+        <p>Soluções completas para profissionais, empresas e gamers. Conheça os nossos serviços e encontre a melhor opção para si.</p>
+    </div>
+
+    <!-- INTRO -->
+    <div class="servicos-intro">
+        <h2>O que oferecemos</h2>
+        <p>Na TechStore disponibilizamos um portfólio diversificado de serviços tecnológicos, pensados para responder às necessidades de cada cliente, desde o entusiasta até à grande empresa.</p>
+    </div>
+
+    <!-- CARDS DE SERVIÇOS -->
+    <div class="servicos-grid">
+
+        <div class="servico-card">
+            <div class="icon-wrapper"><span>🛒</span></div>
+            <h3>Venda de Equipamentos</h3>
+            <p>PCs, portáteis, monitores, periféricos e componentes das melhores marcas do mercado, com garantia e procedência assegurada.</p>
+            <a href="Pcatalogo.html" class="saiba-mais">Ver catálogo →</a>
+        </div>
+
+        <div class="servico-card">
+            <div class="icon-wrapper"><span>🔧</span></div>
+            <h3>Montagem Personalizada</h3>
+            <p>Configuração à medida para gaming, trabalho profissional ou servidores empresariais, optimizada para o máximo desempenho.</p>
+            <a href="Pcontacto.html" class="saiba-mais">Solicitar orçamento →</a>
+        </div>
+
+        <div class="servico-card">
+            <div class="icon-wrapper"><span>📦</span></div>
+            <h3>Entrega Rápida</h3>
+            <p>Logística própria para todo o território nacional, com entregas em 24h a 72h úteis e rastreamento em tempo real.</p>
+            <a href="Pcontacto.html" class="saiba-mais">Saber mais →</a>
+        </div>
+
+        <div class="servico-card">
+            <div class="icon-wrapper"><span>🛡️</span></div>
+            <h3>Garantia e RMA</h3>
+            <p>Suporte e substituição ágil com garantia de 3 anos para equipamentos novos e 1 ano para recondicionados.</p>
+            <a href="Pfaq.html" class="saiba-mais">Ver condições →</a>
+        </div>
+
+        <div class="servico-card">
+            <div class="icon-wrapper"><span>📡</span></div>
+            <h3>Consultoria IT</h3>
+            <p>Apoio especializado na escolha de infraestrutura tecnológica para empresas, com análise de necessidades e soluções sob medida.</p>
+            <a href="Pcontacto.html" class="saiba-mais">Falar com consultor →</a>
+        </div>
+
+        <div class="servico-card">
+            <div class="icon-wrapper"><span>💻</span></div>
+            <h3>Reparação de Equipamentos</h3>
+            <p>Serviço técnico especializado em hardware, com diagnóstico gratuito e reparação rápida, utilizando peças originais.</p>
+            <a href="Pcontacto.html" class="saiba-mais">Agendar reparação →</a>
+        </div>
+
+    </div>
+
+    <!-- BOTÃO PARA CONTACTO -->
+    <div class="btn-contacto-wrapper">
+        <h3>Precisa de mais informações?</h3>
+        <p>Entre em contacto connosco e tire todas as suas dúvidas sobre os nossos serviços e produtos.</p>
+        <a href="Pcontacto.html" class="btn-contacto">Falar com um especialista</a>
+    </div>
+
+    <div class="video-wrapper">
+        <h3>Vídeo: Como montar um PC Gamer — Guia Completo</h3>
+        <iframe src="Video Project (4).mp4" title="Como montar um PC Gamer" allowfullscreen></iframe>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>TechStore © 2026 · <a href="Projecto.html">Página Inicial</a> · <a href="Pcontacto.html">Contacto</a></p>
+    </div>
+
+</div>
+</body>
+</html>

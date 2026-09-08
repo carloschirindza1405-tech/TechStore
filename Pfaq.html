@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore · FAQ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f9;
+            color: #1a2634;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0b1a2a, #1a3a5c);
+            padding: 20px 0 0;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0 20px 15px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-container img {
+            height: 45px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #6ab0ff;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 10px 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #c8dcee;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        nav ul li a.ativo {
+            background: rgba(106, 176, 255, 0.25);
+            color: #fff;
+            box-shadow: inset 0 -2px 0 #6ab0ff;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            margin: 30px 0 15px;
+            color: #0b1a2a;
+            border-left: 5px solid #6ab0ff;
+            padding-left: 18px;
+        }
+
+        p {
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+            color: #2a3a4a;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            border-left: 4px solid #6ab0ff;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-item .pergunta {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0b1a2a;
+        }
+
+        .faq-item .resposta {
+            font-size: 1rem;
+            color: #4a5a6a;
+            margin-top: 8px;
+        }
+
+        .faq-item .categoria {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #6ab0ff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid #dde5ed;
+            color: #6a7a8a;
+            font-size: 0.95rem;
+        }
+
+        .footer a {
+            color: #1a3a5c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: #6ab0ff;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="LOGO.jpeg" alt="Logo CC14">
+                <div class="logo">Tech<span>Store</span></div>
+            </div>
+            <nav>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="Psobre.html">Sobre</a></li>
+        <li><a href="Pservicos.html">Serviços</a></li>
+        <li><a href="Pcatalogo.html">Catálogo</a></li>
+        <li><a href="Pcontacto.html">Contacto</a></li>
+        <li><a href="Pfaq.html" class="ativo">FAQ</a></li>
+    </ul>
+</nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <h1>Perguntas Frequentes</h1>
+    <p>Encontre respostas para as dúvidas mais comuns sobre os nossos produtos e serviços.</p>
+
+    <div class="faq-item">
+        <div class="pergunta">Qual o prazo de entrega?</div>
+        <div class="resposta">O prazo de entrega é entre 24h a 72h úteis, dependendo da localização e da disponibilidade do produto em stock.</div>
+        <span class="categoria">Entregas</span>
+    </div>
+
+    <div class="faq-item">
+        <div class="pergunta">Oferecem garantia?</div>
+        <div class="resposta">Sim, oferecemos 3 anos de garantia para equipamentos novos e 1 ano para produtos recondicionados. Todas as garantias são cobertas pelo fabricante e pela TechStore.</div>
+        <span class="categoria">Garantia</span>
+    </div>
+
+    <div class="faq-item">
+        <div class="pergunta">Posso cancelar uma encomenda?</div>
+        <div class="resposta">Sim, pode cancelar a sua encomenda dentro de 14 dias após a compra, desde que o produto não tenha sido enviado. Contacte-nos para mais informações.</div>
+        <span class="categoria">Devoluções</span>
+    </div>
+
+    <div class="faq-item">
+        <div class="pergunta">Têm loja física?</div>
+        <div class="resposta">Sim, temos lojas no Porto (Rua da Tecnologia, 100) e em Lisboa (Av. da Liberdade, 200). Consulte os horários em <a href="Pcontacto.html">Contacto</a>.</div>
+        <span class="categoria">Lojas</span>
+    </div>
+
+    <div class="faq-item">
+        <div class="pergunta">Fazem envios internacionais?</div>
+        <div class="resposta">Sim, fazemos envios para todos os países da União Europeia. Os custos e prazos variam conforme o destino. Consulte as condições na altura da compra.</div>
+        <span class="categoria">Entregas</span>
+    </div>
+
+    <div class="faq-item">
+        <div class="pergunta">Como posso pagar?</div>
+        <div class="resposta">Aceitamos os seguintes métodos de pagamento: Multibanco (referência MB), transferência bancária, PayPal, cartão de crédito (Visa/Mastercard) e MB Way.</div>
+        <span class="categoria">Pagamentos</span>
+    </div>
+
+    <div class="faq-item">
+        <div class="pergunta">Oferecem montagem de PCs?</div>
+        <div class="resposta">Sim! Oferecemos serviço de montagem personalizada. Pode escolher os componentes e nós montamos o seu computador com a melhor optimização. Consulte o <a href="Pservicos.html">Serviços</a> para mais detalhes.</div>
+        <span class="categoria">Serviços</span>
+    </div>
+
+    <div class="faq-item">
+        <div class="pergunta">Têm programa de reciclagem?</div>
+        <div class="resposta">Sim, temos um programa de reciclagem de equipamentos eletrónicos. Pode entregar os seus equipamentos antigos nas nossas lojas e ajudamos a reciclar de forma responsável.</div>
+        <span class="categoria">Sustentabilidade</span>
+    </div>
+
+    <div class="footer">
+        <p>TechStore © 2026 · <a href="Projecto.html">Página Inicial</a> · <a href="Pcontacto.html">Contacto</a></p>
+    </div>
+
+</div>
+</body>
+</html>

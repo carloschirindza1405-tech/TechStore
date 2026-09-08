@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore · Projecto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f9;
+            color: #1a2634;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0b1a2a, #1a3a5c);
+            padding: 20px 0 0;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0 20px 15px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-container img {
+            height: 45px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #6ab0ff;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 10px 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #c8dcee;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        nav ul li a.ativo {
+            background: rgba(106, 176, 255, 0.25);
+            color: #fff;
+            box-shadow: inset 0 -2px 0 #6ab0ff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a3a5c, #0b1a2a);
+            border-radius: 24px;
+            padding: 50px 40px;
+            margin-bottom: 40px;
+            color: #fff;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-text {
+            flex: 1 1 300px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: #6ab0ff;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            background: #6ab0ff;
+            color: #0b1a2a;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8cc4ff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(106, 176, 255, 0.3);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            color: #0b1a2a;
+            border-left: 5px solid #6ab0ff;
+            padding-left: 18px;
+        }
+
+        .destaques {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #0b1a2a;
+        }
+
+        .card-body p {
+            color: #4a5a6a;
+            font-size: 0.95rem;
+        }
+
+        .card-body .preco {
+            display: inline-block;
+            margin-top: 12px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #1a3a5c;
+        }
+
+        .download-section {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 45px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            border: 2px dashed #6ab0ff;
+        }
+
+        .download-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b1a2a;
+            margin-bottom: 10px;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        .download-section p {
+            color: #5a6a7a;
+            margin-bottom: 20px;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: linear-gradient(135deg, #0b1a2a, #1a3a5c);
+            color: #fff;
+            padding: 16px 45px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(26, 58, 92, 0.3);
+            background: linear-gradient(135deg, #1a3a5c, #2a5a8c);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid #dde5ed;
+            color: #6a7a8a;
+            font-size: 0.95rem;
+        }
+
+        .footer a {
+            color: #1a3a5c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: #6ab0ff;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            .hero {
+                padding: 30px 20px;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="LOGO.jpeg" alt="Logo CC14">
+                <div class="logo">Tech<span>Store</span></div>
+            </div>
+            <nav>
+    <ul>
+        <li><a href="index.html" class="ativo">Início</a></li>
+        <li><a href="Psobre.html">Sobre</a></li>
+        <li><a href="Pservicos.html">Serviços</a></li>
+        <li><a href="Pcatalogo.html">Catálogo</a></li>
+        <li><a href="Pcontacto.html">Contacto</a></li>
+        <li><a href="Pfaq.html">FAQ</a></li>
+    </ul>
+</nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Equipamentos <span>Informáticos</span> de Alta Performance</h1>
+            <p>Os melhores componentes, periféricos e soluções tecnológicas para gamers, profissionais e empresas.</p>
+            <a href="Pcatalogo.html" class="btn">Ver Catálogo →</a>
+        </div>
+        <div class="hero-image">
+            <img src="The Ultimate Battle Station.jpg" alt="Setup informático">
+        </div>
+    </section>
+
+    <h2>Destaques da Semana</h2>
+    <div class="destaques">
+        <div class="card">
+            <img src="a-pc-pouter3preto-cgpu-m-240mm-001_3_9.jpg" alt="PC Gamer">
+            <div class="card-body">
+                <h3>PC Gamer Pichau Balder V</h3>
+                <p>AMD Ryzen 7 5800X3D · 16GB RAM DDR4 · 1TB SSD · GeForce RTX 5080 16GB</p>
+                <span class="preco">95.000 MT</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="100-100000457box1.jpg" alt="Processador">
+            <div class="card-body">
+                <h3>AMD Ryzen 5 5500</h3>
+                <p>6-Core · 12-Threads · 3.6GHz (4.2GHz Turbo) · Cache 19MB</p>
+                <span class="preco">7.000 MT</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="mcr-hznp24-bl0221225.jpg" alt="Monitor">
+            <div class="card-body">
+                <h3>Monitor Gamer Mancer Horizon Z Pro</h3>
+                <p>23.8" · 144Hz · IPS FHD · 1ms</p>
+                <span class="preco">6.300 MT</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="download-section">
+        <h2>Descarregar Catálogo</h2>
+        <p>Faça o download do nosso catálogo informativo completo em PDF.</p>
+        <a href="TECHSTORE.pdf" download class="btn-download">
+            Descarregar PDF
+        </a>
+    </div>
+
+    <div class="footer">
+        <p>TechStore © 2026 · Todos os direitos reservados · <a href="Projecto.html">Página Inicial</a></p>
+    </div>
+
+</div>
+</body>
+</html>
